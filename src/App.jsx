@@ -11,19 +11,14 @@ function App() {
       </div>
       <div class="d-flex justify-content-center m-2">
         <div class="col-sm-2">
-          <div class="card">
-            <div class="card-body">
-              <p>Active Users:  5</p>
-            </div>
-          </div>
+              <button type="button" class="btn btn-outline-warning">
+              Active Users <span class="badge bg-secondary">4</span>
+              </button>
         </div>
         <div class="col-sm-2">
-          <div class="card">
-            <div class="card-body">
-            <p>Latest Users:  2</p>
-
-            </div>
-          </div>
+        <button type="button" class="btn btn-outline-info">
+                Active Contests <span class="badge bg-secondary">4</span>
+        </button>
         </div>
       </div>
       <div className='container'>
