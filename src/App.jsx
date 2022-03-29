@@ -6,25 +6,25 @@ function App() {
 
   return (
     <div className='animate-bottom'>
-       <div className="container-fluid bg-dark p-4">
-          <h4 className='text-center text-white'>Contest Forces</h4>
+      <div className="container-fluid bg-dark p-4">
+        <h4 className='text-center text-white'>Contest Forces</h4>
       </div>
       <div class="d-flex justify-content-center m-2">
         <div class="col-sm-2">
-              <button type="button" class="btn btn-outline-warning">
-              Active Users <span class="badge bg-secondary">4</span>
-              </button>
+          <button type="button" class="btn btn-outline-warning">
+            Active Users <span class="badge bg-secondary">4</span>
+          </button>
         </div>
         <div class="col-sm-2">
-        <button type="button" class="btn btn-outline-info">
-                Active Contests <span class="badge bg-secondary">4</span>
-        </button>
+          <button type="button" class="btn btn-outline-warning">
+            Active Contests <span class="badge bg-secondary">4</span>
+          </button>
         </div>
       </div>
       <div className='container'>
         <div className='table-responsive'>
           <table className='table table-bordered table-hover'>
-          <thead>
+            <thead>
               <tr>
                 <th>Rank</th>
                 <th>Username</th>
@@ -34,7 +34,7 @@ function App() {
               </tr>
             </thead>
             <tbody id="tbody">
-            <tr>
+              <tr>
                 <th scope="row">1</th>
                 <td>simran58</td>
                 <td>0</td>
@@ -80,8 +80,8 @@ function App() {
           </table>
         </div>
       </div>
-          
-  </div>
+
+    </div>
   )
 }
 
