@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-
-
 function App() {
   const [users, setUsers] = useState(null);
 
@@ -16,24 +14,52 @@ function App() {
     setUsers(users)
   }
 
-  const displayUsers = () => {
+  const getTable = () => {
     if (users) {
       return (
-        users.map((user, index) => {
-          return (
-            <>
-              <tr>
-                <th scope="row">{index+1}</th>
-                <td>{user.username}</td>
-                <td>{user.start_rank}</td>
-                <td>{user.present_rank}</td>
-                <td>{user.performance}</td>
-              </tr>
-            </>
-          )
-        })
+        <div className='container'>
+          <div className='table-responsive'>
+            <table className='table table-bordered table-hover'>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Username</th>
+                  <th>Start Rating</th>
+                  <th>Latest Rating</th>
+                  <th>Rating Change</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                {displayUsers()}
+              </tbody>
+            </table>
+          </div>
+        </div>
       )
     }
+    else {
+      return (
+        <div className='loader'></div>
+      )
+    }
+  }
+
+  const displayUsers = () => {
+    return (
+      users.map((user, index) => {
+        return (
+          <>
+            <tr>
+              <th scope="row">{index + 1}</th>
+              <td>{user.username}</td>
+              <td>{user.start_rank}</td>
+              <td>{user.present_rank}</td>
+              <td>{user.performance}</td>
+            </tr>
+          </>
+        )
+      })
+    )
   }
 
   return (
@@ -54,25 +80,8 @@ function App() {
             </button>
           </div>
         </div>
-        <div className='container'>
-          <div className='table-responsive'>
-            <table className='table table-bordered table-hover'>
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Username</th>
-                  <th>Start Rating</th>
-                  <th>Latest Rating</th>
-                  <th>Rating Change</th>
-                </tr>
-              </thead>
-              <tbody id="tbody">
-                {displayUsers()}
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
+      {getTable()}
     </>
   )
 }
