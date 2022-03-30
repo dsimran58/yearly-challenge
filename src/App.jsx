@@ -1,66 +1,67 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import RankingTable from './RankingTable/RankingTable'
 
 function App() {
   const [users, setUsers] = useState(null);
 
-  useEffect(() => {
-    getData()
-  }, [])
+//   useEffect(() => {
+//     getData()
+//   }, [])
+//
+//   async function getData() {
+//     const response = await fetch(`/.netlify/functions/fetch-user-data`);
+//     const users = await response.json();
+//     setUsers(users)
+//   }
 
-  async function getData() {
-    const response = await fetch(`/.netlify/functions/fetch-user-data`);
-    const users = await response.json();
-    setUsers(users)
-  }
+//   const getTable = () => {
+//     if (users) {
+//       return (
+//         <div className='container'>
+//           <div className='table-responsive'>
+//             <table className='table table-bordered table-hover'>
+//               <thead>
+//                 <tr>
+//                   <th>Rank</th>
+//                   <th>Username</th>
+//                   <th>Start Rating</th>
+//                   <th>Latest Rating</th>
+//                   <th>Rating Change</th>
+//                 </tr>
+//               </thead>
+//               <tbody id="tbody">
+//                 {displayUsers()}
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//       )
+//     }
+//     else {
+//       return (
+//         <div className='loader'></div>
+//       )
+//     }
+//   }
 
-  const getTable = () => {
-    if (users) {
-      return (
-        <div className='container'>
-          <div className='table-responsive'>
-            <table className='table table-bordered table-hover'>
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Username</th>
-                  <th>Start Rating</th>
-                  <th>Latest Rating</th>
-                  <th>Rating Change</th>
-                </tr>
-              </thead>
-              <tbody id="tbody">
-                {displayUsers()}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )
-    }
-    else {
-      return (
-        <div className='loader'></div>
-      )
-    }
-  }
-
-  const displayUsers = () => {
-    return (
-      users.map((user, index) => {
-        return (
-          <>
-            <tr>
-              <th scope="row">{index + 1}</th>
-              <td>{user.username}</td>
-              <td>{user.start_rank}</td>
-              <td>{user.present_rank}</td>
-              <td>{user.performance}</td>
-            </tr>
-          </>
-        )
-      })
-    )
-  }
+//   const displayUsers = () => {
+//     return (
+//       users.map((user, index) => {
+//         return (
+//           <>
+//             <tr>
+//               <th scope="row">{index + 1}</th>
+//               <td>{user.username}</td>
+//               <td>{user.start_rank}</td>
+//               <td>{user.present_rank}</td>
+//               <td>{user.performance}</td>
+//             </tr>
+//           </>
+//         )
+//       })
+//     )
+//   }
 
   return (
     <>
@@ -81,7 +82,7 @@ function App() {
           </div>
         </div>
       </div>
-      {getTable()}
+        <RankingTable/>
     </>
   )
 }
