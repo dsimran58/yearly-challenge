@@ -1,60 +1,43 @@
-import { useEffect, useState,React } from 'react'
-import './RankingTable.css'
+import { useEffect, useState, React } from 'react'
+import Loader from '../Loader/Loader';
 
 function RankingTable() {
-const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState(null);
 
-useEffect(() => {
+  useEffect(() => {
     getData()
   }, [])
 
-async function getData() {
+  async function getData() {
     const response = await fetch(`/.netlify/functions/fetch-user-data`);
     const users = await response.json();
     setUsers(users)
-}
+  }
 
   const getTable = () => {
     if (users) {
       return (
-      <>
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Username</th>
-          <th>Start Rating</th>
-          <th>Latest Rating</th>
-          <th>Rating Change</th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-            {displayUsers()}
-        </tbody>
+        <>
+          <table className='table table-bordered table-hover'>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Start Rating</th>
+                <th>Latest Rating</th>
+                <th>Rating Change</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              {displayUsers()}
+            </tbody>
+          </table>
         </>
       )
     }
     else {
       return (
-        <div className='text-center'>
-        <div className="spinner-grow text-primary" role="status">
-          <span className="sr-only"></span>
-        </div>
-        <div className="spinner-grow text-secondary" role="status">
-          <span className="sr-only"></span>
-        </div>
-        <div className="spinner-grow text-success" role="status">
-          <span className="sr-only"></span>
-        </div>
-        <div className="spinner-grow text-danger" role="status">
-          <span className="sr-only"></span>
-        </div>
-        <div className="spinner-grow text-warning" role="status">
-          <span className="sr-only"></span>
-        </div>
-        <div className="spinner-grow text-info" role="status">
-          <span className="sr-only"></span>
-        </div>
-        </div>
+        <Loader />
       )
     }
   }
@@ -77,15 +60,12 @@ async function getData() {
     )
   }
 
-  return(
-  <div className='container'>
-            <div className='table-responsive'>
-              <table className='table table-bordered table-hover'>
-
-                   {getTable()}
-              </table>
-            </div>
-          </div>
+  return (
+    <div className='container'>
+      <div className='table-responsive'>
+        {getTable()}
+      </div>
+    </div>
   );
 }
 
