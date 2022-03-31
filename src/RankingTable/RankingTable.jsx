@@ -3,15 +3,17 @@ import Loader from '../Loader/Loader';
 
 function RankingTable() {
   const [users, setUsers] = useState(null);
+  const [totalCount,setTotalCount] = useState(null);
 
   useEffect(() => {
     getData()
   }, [])
 
   async function getData() {
-    const response = await fetch(`/.netlify/functions/fetch-user-data`);
-    const users = await response.json();
-    setUsers(users)
+    const response = await fetch(`/.netlify/functions/fetch-user-data?page=${1}&size=${10}`);
+    const {users,totalCount} = await response.json();
+    setUsers(users);
+    setTotalCount(totalCount);
   }
 
   const getTable = () => {
